@@ -3,7 +3,7 @@
 # Default to UTC if no TIMEZONE env variable is set
 echo "Setting time zone to ${TIMEZONE=UTC}"
 # This only works on Debian-based images
-echo "${TIMEZONE}" > /etc/timezone
+ln -fs "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime
 dpkg-reconfigure tzdata
 
 # Replace this below with your own application start
